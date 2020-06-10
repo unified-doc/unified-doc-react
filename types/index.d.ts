@@ -1,11 +1,6 @@
-import {
-  Annotation,
-  AnnotationCallbacks,
-  Plugin,
-  SearchAlgorithm,
-} from 'unified-doc';
+import { Annotation, AnnotationCallbacks } from 'unified-doc';
 
-export type Optional<T> = {
+type Optional<T> = {
   [P in keyof T]?: T[P];
 };
 
@@ -15,8 +10,8 @@ export interface Props {
   content?: string | Buffer;
   annotations?: Annotation[];
   annotationCallbacks?: Optional<AnnotationCallbacks>;
-  plugins?: Plugin[] | Plugin[][];
-  sanitizeSchema?: object;
+  plugins?: any[]; // TODO: figure out how to type this correctly
+  sanitizeSchema?: Record<string, unknown>;
 }
 
 export default function Doc(props: Props): React.ReactElement;

@@ -11,22 +11,30 @@
     "unified",
     "doc",
     "react",
-    "util",
-    "offsets",
     "document",
     "file",
     "content",
     "unist",
     "hast",
-    "position"
+    "parse",
+    "html",
+    "markdown",
+    "text",
+    "compile",
+    "export",
+    "annotate",
+    "highlight",
+    "nlp",
+    "search"
   ],
   "scripts": {
-    "build": "microbundle --external none --jsx React.createElement",
+    "bootstrap": "npm install",
+    "build": "microbundle --jsx React.createElement",
+    "clean": "rm -rf dist",
     "dev": "microbundle watch --jsx React.createElement",
-    "clean": "rm -rf dist node_modules",
     "lint": "xo --fix; tsc",
     "test": "jest --watch",
-    "test:ci": "jest"
+    "test:run": "jest"
   },
   "main": "dist/index.js",
   "module": "dist/index.module.js",
@@ -34,13 +42,13 @@
   "typings": "types/index.d.ts",
   "dependencies": {
     "rehype-react": "^6.0.0",
-    "unified-doc": "^0.1.4-beta.0"
+    "unified-doc": "^0.1.6-beta.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
-    "@types/jest": "^25.2.3",
-    "@types/react": "^16.9.35",
+    "@types/jest": "^26.0.0",
+    "@types/react": "^16.9.36",
     "babel-jest": "^26.0.1",
     "eslint-config-xo-react": "^0.23.0",
     "eslint-plugin-react": "^7.20.0",
@@ -51,15 +59,15 @@
     "react": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "rehype-toc": "^3.0.1",
-    "typescript": "^3.8.3",
-    "xo": "^0.30.0"
+    "typescript": "^3.9.5",
+    "xo": "^0.32.0"
   },
   "peerDependencies": {
     "react": "^16.13.1"
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run lint; npm run test:ci; npm run clean; npm run build"
+      "pre-push": "npm run lint; npm run test:run; npm run clean; npm run build"
     }
   },
   "prettier": {

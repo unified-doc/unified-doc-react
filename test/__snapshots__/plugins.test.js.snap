@@ -3,9 +3,13 @@
 exports[`plugins applies custom plugins 1`] = `
 <div>
   <div>
-    <ol
-      className="custom-list custom-list-1"
-    />
+    <nav
+      className="toc"
+    >
+      <ol
+        className="custom-list custom-list-1"
+      />
+    </nav>
     <blockquote>
       <strong>
         some

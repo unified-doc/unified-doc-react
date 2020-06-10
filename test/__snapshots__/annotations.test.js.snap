@@ -6,7 +6,9 @@ exports[`annotations annotates text nodes (no-overlap) 1`] = `
     <blockquote>
       <strong>
         <div>
-          <mark>
+          <mark
+            data-annotation-id="a"
+          >
             some
           </mark>
         </div>
@@ -14,7 +16,9 @@ exports[`annotations annotates text nodes (no-overlap) 1`] = `
       <div>
         
 
-        <mark>
+        <mark
+          data-annotation-id="b"
+        >
           content
         </mark>
       </div>
@@ -29,34 +33,64 @@ exports[`annotations annotates text nodes (overlapping) 1`] = `
     <blockquote>
       <strong>
         <div>
-          <mark>
+          <mark
+            className="class-a"
+            data-annotation-id="a"
+          >
             some
           </mark>
         </div>
       </strong>
       <div>
-        <mark>
+        <mark
+          className="class-a"
+          data-annotation-id="a"
+        >
           
 
         </mark>
-        <mark>
-          <mark>
+        <mark
+          className="class-a"
+          data-annotation-id="a"
+        >
+          <mark
+            className="class-b"
+            data-annotation-id="b"
+          >
             c
           </mark>
         </mark>
-        <mark>
-          <mark>
-            <mark>
+        <mark
+          className="class-a"
+          data-annotation-id="a"
+        >
+          <mark
+            className="class-b"
+            data-annotation-id="b"
+          >
+            <mark
+              className="class-c"
+              data-annotation-id="c"
+            >
               o
             </mark>
           </mark>
         </mark>
-        <mark>
-          <mark>
+        <mark
+          className="class-b"
+          data-annotation-id="b"
+        >
+          <mark
+            className="class-c"
+            data-annotation-id="c"
+          >
             nte
           </mark>
         </mark>
-        <mark>
+        <mark
+          className="class-c"
+          data-annotation-id="c"
+        >
           nt
         </mark>
       </div>
@@ -71,7 +105,10 @@ exports[`annotations applies custom classe names 1`] = `
     <blockquote>
       <strong>
         <div>
-          <mark>
+          <mark
+            className="class-a"
+            data-annotation-id="a"
+          >
             some
           </mark>
         </div>
@@ -79,7 +116,10 @@ exports[`annotations applies custom classe names 1`] = `
       <div>
         
 
-        <mark>
+        <mark
+          className="class-b1 class-b2"
+          data-annotation-id="b"
+        >
           content
         </mark>
       </div>
