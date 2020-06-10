@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`classname applies custom CSS class name 1`] = `
+<div
+  className="custom-doc"
+>
+  <div>
+    <blockquote>
+      <strong>
+        some
+      </strong>
+      
+content
+    </blockquote>
+  </div>
+</div>
+`;

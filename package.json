@@ -1,0 +1,95 @@
+{
+  "name": "unified-doc-react",
+  "version": "0.1.4-beta.0",
+  "description": "react wrapper for unified-doc",
+  "license": "MIT",
+  "homepage": "https://github.com/unified-doc/unified-doc-react",
+  "repository": "unified-doc/unified-doc-react",
+  "bugs": "https://github.com/unified-doc/unified-doc-react/issues",
+  "author": "Chris Zhou <chrisrzhou@pm.me> (https://chrisrzhou.io)",
+  "keywords": [
+    "unified",
+    "doc",
+    "react",
+    "util",
+    "offsets",
+    "document",
+    "file",
+    "content",
+    "unist",
+    "hast",
+    "position"
+  ],
+  "scripts": {
+    "build": "microbundle --external none --jsx React.createElement",
+    "dev": "microbundle watch --jsx React.createElement",
+    "clean": "rm -rf dist node_modules",
+    "lint": "xo --fix; tsc",
+    "test": "jest --watch",
+    "test:ci": "jest"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "source": "index.js",
+  "typings": "types/index.d.ts",
+  "dependencies": {
+    "rehype-react": "^6.0.0",
+    "unified-doc": "^0.1.4-beta.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "@types/jest": "^25.2.3",
+    "@types/react": "^16.9.35",
+    "babel-jest": "^26.0.1",
+    "eslint-config-xo-react": "^0.23.0",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "microbundle": "^0.12.0",
+    "react": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
+    "rehype-toc": "^3.0.1",
+    "typescript": "^3.8.3",
+    "xo": "^0.30.0"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint; npm run test:ci; npm run clean; npm run build"
+    }
+  },
+  "prettier": {
+    "bracketSpacing": true,
+    "jsxBracketSameLine": true,
+    "trailingComma": "all",
+    "useTabs": false
+  },
+  "xo": {
+    "env": [
+      "jest"
+    ],
+    "extends": [
+      "xo-react"
+    ],
+    "prettier": true,
+    "rules": {
+      "@typescript-eslint/prefer-readonly-parameter-types": "off",
+      "capitalized-comments": "off",
+      "import/no-extraneous-dependencies": "off",
+      "no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_"
+        }
+      ],
+      "no-warning-comments": "off",
+      "padding-line-between-statements": "off",
+      "react/function-component-definition": "off",
+      "react/prop-types": "off"
+    }
+  }
+}

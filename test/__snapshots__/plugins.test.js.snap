@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`plugins applies custom plugins 1`] = `
+<div>
+  <div>
+    <ol
+      className="custom-list custom-list-1"
+    />
+    <blockquote>
+      <strong>
+        some
+      </strong>
+      
+content
+    </blockquote>
+  </div>
+</div>
+`;

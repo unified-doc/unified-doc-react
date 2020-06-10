@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`annotations annotates text nodes (no-overlap) 1`] = `
+<div>
+  <div>
+    <blockquote>
+      <strong>
+        <div>
+          <mark>
+            some
+          </mark>
+        </div>
+      </strong>
+      <div>
+        
+
+        <mark>
+          content
+        </mark>
+      </div>
+    </blockquote>
+  </div>
+</div>
+`;
+
+exports[`annotations annotates text nodes (overlapping) 1`] = `
+<div>
+  <div>
+    <blockquote>
+      <strong>
+        <div>
+          <mark>
+            some
+          </mark>
+        </div>
+      </strong>
+      <div>
+        <mark>
+          
+
+        </mark>
+        <mark>
+          <mark>
+            c
+          </mark>
+        </mark>
+        <mark>
+          <mark>
+            <mark>
+              o
+            </mark>
+          </mark>
+        </mark>
+        <mark>
+          <mark>
+            nte
+          </mark>
+        </mark>
+        <mark>
+          nt
+        </mark>
+      </div>
+    </blockquote>
+  </div>
+</div>
+`;
+
+exports[`annotations applies custom classe names 1`] = `
+<div>
+  <div>
+    <blockquote>
+      <strong>
+        <div>
+          <mark>
+            some
+          </mark>
+        </div>
+      </strong>
+      <div>
+        
+
+        <mark>
+          content
+        </mark>
+      </div>
+    </blockquote>
+  </div>
+</div>
+`;
+
+exports[`annotations does not annotate with annotations out of range 1`] = `
+<div>
+  <div>
+    <blockquote>
+      <strong>
+        some
+      </strong>
+      
+content
+    </blockquote>
+  </div>
+</div>
+`;
+
+exports[`annotations does not annotate with empty annotations 1`] = `
+<div>
+  <div>
+    <blockquote>
+      <strong>
+        some
+      </strong>
+      
+content
+    </blockquote>
+  </div>
+</div>
+`;

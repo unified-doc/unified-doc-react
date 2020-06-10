@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`content buffer content renders buffer content (.html extension) 1`] = `
+<div>
+  <div>
+    <blockquote>
+      <strong>
+        some
+      </strong>
+      
+content
+    </blockquote>
+  </div>
+</div>
+`;
+
+exports[`content buffer content renders buffer content (.md extension) 1`] = `
+<div>
+  <div />
+</div>
+`;
+
+exports[`content buffer content renders buffer content (.txt extension) 1`] = `
+<div>
+  <div>
+    &lt;blockquote&gt;&lt;strong&gt;some&lt;/strong&gt;
+content&lt;/blockquote&gt;
+  </div>
+</div>
+`;
+
+exports[`content html content renders html content (.html extension) 1`] = `
+<div>
+  <div>
+    <blockquote>
+      <strong>
+        some
+      </strong>
+      
+content
+    </blockquote>
+  </div>
+</div>
+`;
+
+exports[`content html content renders html content (.md extension) 1`] = `
+<div>
+  <div />
+</div>
+`;
+
+exports[`content html content renders html content (.txt extension) 1`] = `
+<div>
+  <div>
+    &lt;blockquote&gt;&lt;strong&gt;some&lt;/strong&gt;
+content&lt;/blockquote&gt;
+  </div>
+</div>
+`;
+
+exports[`content markdown content renders markdown content (.html extension) 1`] = `
+<div>
+  <div>
+    &gt; **some** markdown content
+  </div>
+</div>
+`;
+
+exports[`content markdown content renders markdown content (.md extension) 1`] = `
+<div>
+  <div>
+    <blockquote>
+      
+
+      <p>
+        <strong>
+          some
+        </strong>
+         markdown content
+      </p>
+      
+
+    </blockquote>
+  </div>
+</div>
+`;
+
+exports[`content markdown content renders markdown content (.txt extension) 1`] = `
+<div>
+  <div>
+    &gt; **some** markdown content
+  </div>
+</div>
+`;
