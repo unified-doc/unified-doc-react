@@ -30,4 +30,4 @@ export function Doc({
   );
 }
 
-export { useDoc };
+export { DocProvider, useDoc };
