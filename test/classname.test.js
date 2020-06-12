@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Doc from '..';
 import { htmlContent } from './fixtures';
+import Doc from '../lib/component';
 
 describe('classname', () => {
   it('applies custom CSS class name', () => {
