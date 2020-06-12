@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Doc from '../lib/component';
+import { Doc } from '..';
 
 const htmlContent = '<div classname="red" style="background: red;">text</div>';
 

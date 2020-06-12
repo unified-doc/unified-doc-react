@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import toc from 'rehype-toc';
 
 import { htmlContent } from './fixtures';
-import Doc from '../lib/component';
+import { Doc } from '..';
 
 describe('plugins', () => {
   it('applies custom plugins', () => {

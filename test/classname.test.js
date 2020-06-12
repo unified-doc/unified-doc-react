@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import { htmlContent } from './fixtures';
-import Doc from '../lib/component';
+import { Doc } from '..';
 
 describe('classname', () => {
   it('applies custom CSS class name', () => {
