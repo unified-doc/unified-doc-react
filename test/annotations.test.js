@@ -50,10 +50,10 @@ describe('annotations', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('applies custom classe names', () => {
+  it('applies custom class names and styles', () => {
     const annotations = [
-      { id: 'a', className: ['class-a'], start: 0, end: 4 },
-      { id: 'b', className: ['class-b1', 'class-b2'], start: 5, end: 12 },
+      { id: 'a', classNames: ['class-a'], style: {background: 'red', color: 'yellow' }, start: 0, end: 4 },
+      { id: 'b', classNames: ['class-b1', 'class-b2'], start: 5, end: 12 },
     ];
     const tree = renderer
       .create(
@@ -69,9 +69,9 @@ describe('annotations', () => {
 
   it('annotates text nodes (overlapping)', () => {
     const annotations = [
-      { id: 'a', className: ['class-a'], start: 0, end: 7 },
-      { id: 'b', className: ['class-b'], start: 5, end: 10 },
-      { id: 'c', className: ['class-c'], start: 6, end: 15 },
+      { id: 'a', classNames: ['class-a'], start: 0, end: 7 },
+      { id: 'b', classNames: ['class-b'], start: 5, end: 10 },
+      { id: 'c', classNames: ['class-c'], start: 6, end: 15 },
     ];
     const tree = renderer
       .create(

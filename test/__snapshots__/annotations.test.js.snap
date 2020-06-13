@@ -8,6 +8,7 @@ exports[`annotations annotates text nodes (no-overlap) 1`] = `
         <div>
           <mark
             data-annotation-id="a"
+            id="a"
           >
             some
           </mark>
@@ -18,6 +19,7 @@ exports[`annotations annotates text nodes (no-overlap) 1`] = `
 
         <mark
           data-annotation-id="b"
+          id="b"
         >
           content
         </mark>
@@ -36,6 +38,7 @@ exports[`annotations annotates text nodes (overlapping) 1`] = `
           <mark
             className="class-a"
             data-annotation-id="a"
+            id="a"
           >
             some
           </mark>
@@ -56,6 +59,7 @@ exports[`annotations annotates text nodes (overlapping) 1`] = `
           <mark
             className="class-b"
             data-annotation-id="b"
+            id="b"
           >
             c
           </mark>
@@ -71,6 +75,7 @@ exports[`annotations annotates text nodes (overlapping) 1`] = `
             <mark
               className="class-c"
               data-annotation-id="c"
+              id="c"
             >
               o
             </mark>
@@ -99,7 +104,7 @@ exports[`annotations annotates text nodes (overlapping) 1`] = `
 </div>
 `;
 
-exports[`annotations applies custom classe names 1`] = `
+exports[`annotations applies custom class names and styles 1`] = `
 <div>
   <div>
     <blockquote>
@@ -108,6 +113,13 @@ exports[`annotations applies custom classe names 1`] = `
           <mark
             className="class-a"
             data-annotation-id="a"
+            id="a"
+            style={
+              Object {
+                "background": "red",
+                "color": "yellow",
+              }
+            }
           >
             some
           </mark>
@@ -119,6 +131,7 @@ exports[`annotations applies custom classe names 1`] = `
         <mark
           className="class-b1 class-b2"
           data-annotation-id="b"
+          id="b"
         >
           content
         </mark>
