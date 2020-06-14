@@ -11,6 +11,7 @@ export function Doc({
   filename,
   plugins = [],
   sanitizeSchema = {},
+  searchAlgorithm,
   searchOptions = {},
   // component
   className,
@@ -22,6 +23,7 @@ export function Doc({
     filename,
     plugins,
     sanitizeSchema,
+    searchAlgorithm,
     searchOptions,
   };
 

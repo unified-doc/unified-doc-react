@@ -5,25 +5,21 @@ exports[`annotations annotates text nodes (no-overlap) 1`] = `
   <div>
     <blockquote>
       <strong>
-        <div>
-          <mark
-            data-annotation-id="a"
-            id="a"
-          >
-            some
-          </mark>
-        </div>
-      </strong>
-      <div>
-        
-
         <mark
-          data-annotation-id="b"
-          id="b"
+          data-annotation-id="a"
+          id="a"
         >
-          content
+          some
         </mark>
-      </div>
+      </strong>
+      
+
+      <mark
+        data-annotation-id="b"
+        id="b"
+      >
+        content
+      </mark>
     </blockquote>
   </div>
 </div>
@@ -34,53 +30,37 @@ exports[`annotations annotates text nodes (overlapping) 1`] = `
   <div>
     <blockquote>
       <strong>
-        <div>
-          <mark
-            className="class-a"
-            data-annotation-id="a"
-            id="a"
-          >
-            some
-          </mark>
-        </div>
+        <mark
+          className="class-a"
+          data-annotation-id="a"
+          id="a"
+        >
+          some
+        </mark>
       </strong>
-      <div>
-        <mark
-          className="class-a"
-          data-annotation-id="a"
-        >
-          
+      <mark
+        className="class-a"
+        data-annotation-id="a"
+      >
+        
 
-        </mark>
+      </mark>
+      <mark
+        className="class-a"
+        data-annotation-id="a"
+      >
         <mark
-          className="class-a"
-          data-annotation-id="a"
+          className="class-b"
+          data-annotation-id="b"
+          id="b"
         >
-          <mark
-            className="class-b"
-            data-annotation-id="b"
-            id="b"
-          >
-            c
-          </mark>
+          c
         </mark>
-        <mark
-          className="class-a"
-          data-annotation-id="a"
-        >
-          <mark
-            className="class-b"
-            data-annotation-id="b"
-          >
-            <mark
-              className="class-c"
-              data-annotation-id="c"
-              id="c"
-            >
-              o
-            </mark>
-          </mark>
-        </mark>
+      </mark>
+      <mark
+        className="class-a"
+        data-annotation-id="a"
+      >
         <mark
           className="class-b"
           data-annotation-id="b"
@@ -88,17 +68,29 @@ exports[`annotations annotates text nodes (overlapping) 1`] = `
           <mark
             className="class-c"
             data-annotation-id="c"
+            id="c"
           >
-            nte
+            o
           </mark>
         </mark>
+      </mark>
+      <mark
+        className="class-b"
+        data-annotation-id="b"
+      >
         <mark
           className="class-c"
           data-annotation-id="c"
         >
-          nt
+          nte
         </mark>
-      </div>
+      </mark>
+      <mark
+        className="class-c"
+        data-annotation-id="c"
+      >
+        nt
+      </mark>
     </blockquote>
   </div>
 </div>
@@ -109,33 +101,29 @@ exports[`annotations applies custom class names and styles 1`] = `
   <div>
     <blockquote>
       <strong>
-        <div>
-          <mark
-            className="class-a"
-            data-annotation-id="a"
-            id="a"
-            style={
-              Object {
-                "background": "red",
-                "color": "yellow",
-              }
-            }
-          >
-            some
-          </mark>
-        </div>
-      </strong>
-      <div>
-        
-
         <mark
-          className="class-b1 class-b2"
-          data-annotation-id="b"
-          id="b"
+          className="class-a"
+          data-annotation-id="a"
+          id="a"
+          style={
+            Object {
+              "background": "red",
+              "color": "yellow",
+            }
+          }
         >
-          content
+          some
         </mark>
-      </div>
+      </strong>
+      
+
+      <mark
+        className="class-b1 class-b2"
+        data-annotation-id="b"
+        id="b"
+      >
+        content
+      </mark>
     </blockquote>
   </div>
 </div>
