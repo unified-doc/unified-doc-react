@@ -52,7 +52,13 @@ describe('annotations', () => {
 
   it('applies custom class names and styles', () => {
     const annotations = [
-      { id: 'a', classNames: ['class-a'], style: {background: 'red', color: 'yellow' }, start: 0, end: 4 },
+      {
+        id: 'a',
+        classNames: ['class-a'],
+        style: { background: 'red', color: 'yellow' },
+        start: 0,
+        end: 4,
+      },
       { id: 'b', classNames: ['class-b1', 'class-b2'], start: 5, end: 12 },
     ];
     const tree = renderer
