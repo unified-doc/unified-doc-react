@@ -1,9 +1,11 @@
-import { Doc as DocInterface, Options } from 'unified-doc';
+import { Doc as DocInstance, Options } from 'unified-doc';
 
 export * from 'unified-doc';
 
-export interface Props extends Options {
+export interface Props {
   className?: string;
+  options: Options;
+  ref?: React.Ref<HTMLDivElement>;
 }
 
 export interface ProviderProps {
@@ -15,4 +17,4 @@ export function Doc(props: Props): React.ReactElement;
 
 export function DocProvider(providerProps: ProviderProps): React.ReactElement;
 
-export function useDoc(): DocInterface;
+export function useDoc(): DocInstance;

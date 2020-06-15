@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { htmlContent } from './fixtures';
-import { Doc } from '..';
+import { htmlContent } from '../fixtures';
+import { Doc } from '../..';
 
 describe('annotations', () => {
   it('does not annotate with empty annotations', () => {
@@ -10,9 +10,7 @@ describe('annotations', () => {
     const tree = renderer
       .create(
         <Doc
-          annotations={annotations}
-          content={htmlContent}
-          filename="doc.html"
+          options={{ annotations, content: htmlContent, filename: 'doc.html' }}
         />,
       )
       .toJSON();
@@ -24,9 +22,7 @@ describe('annotations', () => {
     const tree = renderer
       .create(
         <Doc
-          annotations={annotations}
-          content={htmlContent}
-          filename="doc.html"
+          options={{ annotations, content: htmlContent, filename: 'doc.html' }}
         />,
       )
       .toJSON();
@@ -41,9 +37,7 @@ describe('annotations', () => {
     const tree = renderer
       .create(
         <Doc
-          annotations={annotations}
-          content={htmlContent}
-          filename="doc.html"
+          options={{ annotations, content: htmlContent, filename: 'doc.html' }}
         />,
       )
       .toJSON();
@@ -64,9 +58,7 @@ describe('annotations', () => {
     const tree = renderer
       .create(
         <Doc
-          annotations={annotations}
-          content={htmlContent}
-          filename="doc.html"
+          options={{ annotations, content: htmlContent, filename: 'doc.html' }}
         />,
       )
       .toJSON();
@@ -82,9 +74,7 @@ describe('annotations', () => {
     const tree = renderer
       .create(
         <Doc
-          annotations={annotations}
-          content={htmlContent}
-          filename="doc.html"
+          options={{ annotations, content: htmlContent, filename: 'doc.html' }}
         />,
       )
       .toJSON();
