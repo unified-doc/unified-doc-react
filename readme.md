@@ -197,9 +197,6 @@ npm run test
 
 # build package with microbundle
 npm run build
-
-# publish package
-npm run publish
 ```
 
 <!-- Links -->

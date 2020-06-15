@@ -34,8 +34,7 @@
     "dev": "microbundle watch --jsx React.createElement",
     "lint": "xo --fix; tsc",
     "test": "jest --watch",
-    "test:run": "jest",
-    "publish": "npm publish"
+    "test:run": "jest"
   },
   "main": "dist/index.js",
   "module": "dist/index.module.js",
