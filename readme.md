@@ -1,6 +1,6 @@
 # unified-doc-react
 
-[react][react] wrapper for [`unified-doc`][unified-doc].
+[react][react] wrapper for [**unified-doc**][unified-doc].
 
 ## Install
 
@@ -175,7 +175,7 @@ interface Options {
 }
 ```
 
-Please refer to [`unified-doc`][unified-doc] for further API details.
+Please refer to [**unified-doc**][unified-doc] for further API details.
 
 ## Development
 

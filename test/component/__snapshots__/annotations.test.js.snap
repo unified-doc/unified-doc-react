@@ -41,6 +41,7 @@ exports[`annotations annotates text nodes (overlapping) 1`] = `
       <mark
         className="class-a"
         data-annotation-id="a"
+        id="a"
       >
         
 

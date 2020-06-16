@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import { markdownContent, htmlContent } from '../fixtures';
-import { Doc } from '../..';
+import Doc from '../../lib/component';
 
 describe('content', () => {
   describe('html content', () => {
