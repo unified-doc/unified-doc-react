@@ -42,7 +42,7 @@
   "typings": "types/index.d.ts",
   "dependencies": {
     "rehype-react": "^6.0.0",
-    "unified-doc": "^0.1.10-beta.0"
+    "unified-doc": "^0.1.11-beta.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.10.2",

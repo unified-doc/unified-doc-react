@@ -138,6 +138,8 @@ const options = {
 
 ## API
 
+Please refer to [**unified-doc**][unified-doc] for comprehensive API details.
+
 ### Methods
 
 ```ts
@@ -174,8 +176,6 @@ interface Options {
   searchOptions?: SearchOptions;
 }
 ```
-
-Please refer to [**unified-doc**][unified-doc] for further API details.
 
 ## Development
 
