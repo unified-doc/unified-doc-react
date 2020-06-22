@@ -1,34 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`content buffer content renders buffer content (.html extension) 1`] = `
-<div>
-  <div>
-    <blockquote>
-      <strong>
-        some
-      </strong>
-      
-content
-    </blockquote>
-  </div>
-</div>
-`;
-
-exports[`content buffer content renders buffer content (.md extension) 1`] = `
-<div>
-  <div />
-</div>
-`;
-
-exports[`content buffer content renders buffer content (.txt extension) 1`] = `
-<div>
-  <div>
-    &lt;blockquote&gt;&lt;strong&gt;some&lt;/strong&gt;
-content&lt;/blockquote&gt;
-  </div>
-</div>
-`;
-
 exports[`content html content renders html content (.html extension) 1`] = `
 <div>
   <div>

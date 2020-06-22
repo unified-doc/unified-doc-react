@@ -53,39 +53,4 @@ describe('content', () => {
       expect(tree).toMatchSnapshot();
     });
   });
-  describe('buffer content', () => {
-    it('renders buffer content (.html extension)', () => {
-      const tree = renderer
-        .create(
-          <Doc
-            options={{
-              content: Buffer.from(htmlContent),
-              filename: 'doc.html',
-            }}
-          />,
-        )
-        .toJSON();
-      expect(tree).toMatchSnapshot();
-    });
-    it('renders buffer content (.txt extension)', () => {
-      const tree = renderer
-        .create(
-          <Doc
-            options={{ content: Buffer.from(htmlContent), filename: 'doc.txt' }}
-          />,
-        )
-        .toJSON();
-      expect(tree).toMatchSnapshot();
-    });
-    it('renders buffer content (.md extension)', () => {
-      const tree = renderer
-        .create(
-          <Doc
-            options={{ content: Buffer.from(htmlContent), filename: 'doc.md' }}
-          />,
-        )
-        .toJSON();
-      expect(tree).toMatchSnapshot();
-    });
-  });
 });

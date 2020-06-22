@@ -1,6 +1,6 @@
 # unified-doc-react
 
-[react][react] wrapper for [**unified-doc**][unified-doc].
+[`react`][react] wrapper for [**unified-doc**][unified-doc].
 
 ## Install
 
@@ -131,6 +131,7 @@ const options = {
   sanitizeSchema: { attributes: { '*': ['style'] } },
   filename: 'doc.html',
   searchOptions: {
+    minMatchCharLength: 3,
     snippetOffsetPadding: 10,
   },
 };
@@ -165,11 +166,11 @@ interface ProviderProps {
 }
 
 interface Options {
+  content: string;
   filename: string;
   annotations?: Annotation[];
   annotationCallbacks?: AnnotationCallbacks;
   compiler?: Compiler;
-  content?: string | Buffer;
   plugins?: Plugin | Plugin[];
   sanitizeSchema?: SanitizeSchema;
   searchAlgorithm?: SearchAlgorithm;
