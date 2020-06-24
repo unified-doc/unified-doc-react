@@ -1,6 +1,6 @@
 {
   "name": "unified-doc-react",
-  "version": "0.1.11-beta.0",
+  "version": "0.1.12-beta.0",
   "description": "react wrapper for unified-doc",
   "license": "MIT",
   "homepage": "https://github.com/unified-doc/unified-doc-react",
@@ -42,20 +42,20 @@
   "typings": "types/index.d.ts",
   "dependencies": {
     "rehype-react": "^6.0.0",
-    "unified-doc": "^0.1.14-beta.0"
+    "unified-doc": "^0.1.16-beta.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
     "@types/jest": "^26.0.0",
-    "@types/react": "^16.9.36",
-    "babel-jest": "^26.0.1",
+    "@types/react": "^16.9.39",
+    "babel-jest": "^26.1.0",
     "eslint-config-xo-react": "^0.23.0",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.4",
     "husky": "^4.2.5",
-    "jest": "^26.0.1",
-    "microbundle": "^0.12.1",
+    "jest": "^26.1.0",
+    "microbundle": "^0.12.2",
     "react": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "rehype-toc": "^3.0.1",

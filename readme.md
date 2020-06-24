@@ -1,15 +1,12 @@
 # unified-doc-react
-
 [`react`][react] wrapper for [**unified-doc**][unified-doc].
 
 ## Install
-
 ```sh
 npm install unified-doc-react
 ```
 
 ## Use
-
 For quick and easy rendering of a document, use the React component:
 
 ```js
@@ -64,7 +61,7 @@ function MyDoc() {
 
   const file = doc.file();
   const compiled = doc.compile();
-  const text = doc.text();
+  const textContent = doc.textContent();
 
   function download(extension) {
     const { content, name, type } = doc.file(extension);
@@ -91,13 +88,16 @@ function MyDoc() {
       <h1>{file.name}</h1>
       <h2>Search</h2>
       <input value={query} onChange={handleSearch} />
-      {results.map((result, i) => (
-        <div key={i}>
-          {result.snippet[0]}
-          <strong>{result.snippet[1]}</strong>
-          {result.snippet[2]}
-        </div>
-      ))}
+      {results.map((result, i) => {
+        const [left, matched, right] = result.snippet;
+        return (
+          <div key={i}>
+            {left}
+            <strong>{matched}</strong>
+            {right}
+          </div>
+        );
+      })}
       <button onClick={clearSearch}>
         Clear search
       </button>
@@ -110,7 +110,7 @@ function MyDoc() {
         Download HTML
       </button>
       <h2>Text Contents</h2>
-      <pre>{text}</pre>
+      <pre>{textContent}</pre>
     </div>
   );
 }
@@ -122,37 +122,45 @@ Configure document `options`:
 import toc from 'rehype-toc';
 
 const options = {
+  content: '<blockquote><strong>some</strong>content</blockquote>',
+  filename: 'doc.html',
   annotations: [ { start: 0, end: 5, classNames: ['a'] }],
   annotationCallbacks: {
     onClick: annotation => console.log(annotation),
   },
-  content: '<blockquote><strong>some</strong>content</blockquote>',
   plugins: [toc],
   sanitizeSchema: { attributes: { '*': ['style'] } },
-  filename: 'doc.html',
   searchOptions: {
-    minMatchCharLength: 3,
-    snippetOffsetPadding: 10,
+    minQueryLength: 3,
+    snippetOffsetPadding: 50,
   },
 };
 ```
 
 ## API
-
-Please refer to [**unified-doc**][unified-doc] for comprehensive API details.
+Please refer to [**unified-doc**][unified-doc] for API details on a `doc` instance.
 
 ### Methods
 
+#### `Doc`
 ```ts
 function Doc(props: Props): React.ReactElement;
+```
+A simple React component that exposes the `doc` APIs.
 
+#### `DocProvider`
+```ts
 function DocProvider(providerProps: ProviderProps): React.ReactElement;
+```
+Use the `DocProvider` to expose the `doc` instance in a React context.  The `doc` instance can be accessed with the `useDoc` method for any components under the `DocProvider`.
 
+#### `useDoc`
+```ts
 function useDoc(): DocInstance;
 ```
+Returns a `doc` instance containing all `unified-doc` APIs.
 
-### Types
-
+### Interfaces
 ```ts
 interface Props {
   className?: string;
@@ -179,6 +187,11 @@ interface Options {
 ```
 
 ## Development
+This project is:
+- linted with `xo` + `prettier` + `tsc`.
+- developed and bundled with `microbundle`.
+- tested with `jest`.
+- softly-typed with `typescript` using `checkJs` (only public APIs are typed).
 
 ```sh
 # bootstrap package
