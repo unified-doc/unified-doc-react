@@ -1,6 +1,6 @@
 {
   "name": "unified-doc-react",
-  "version": "0.1.12-beta.0",
+  "version": "0.1.13-beta.0",
   "description": "react wrapper for unified-doc",
   "license": "MIT",
   "homepage": "https://github.com/unified-doc/unified-doc-react",
@@ -28,11 +28,13 @@
     "search"
   ],
   "scripts": {
-    "bootstrap": "npm install",
+    "bootstrap": "npm install; lerna bootstrap",
     "build": "microbundle --jsx React.createElement",
     "clean": "rm -rf dist",
     "dev": "microbundle watch --jsx React.createElement",
     "lint": "xo --fix; tsc",
+    "prepare": "npm run clean; npm run build",
+    "publish": "lerna publish",
     "test": "jest --watch",
     "test:run": "jest"
   },
@@ -42,7 +44,7 @@
   "typings": "types/index.d.ts",
   "dependencies": {
     "rehype-react": "^6.0.0",
-    "unified-doc": "^0.1.16-beta.0"
+    "unified-doc": "^1.0.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.10.3",
@@ -55,6 +57,7 @@
     "eslint-plugin-react-hooks": "^4.0.4",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
+    "lerna": "^3.22.1",
     "microbundle": "^0.12.2",
     "react": "^16.13.1",
     "react-test-renderer": "^16.13.1",
@@ -67,7 +70,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run lint; npm run test:run; npm run clean; npm run build"
+      "pre-push": "npm prepare; npm run lint; npm run test:run"
     }
   },
   "prettier": {

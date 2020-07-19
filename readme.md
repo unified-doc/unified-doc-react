@@ -7,7 +7,7 @@ npm install unified-doc-react
 ```
 
 ## Use
-For quick and easy rendering of a document, use the React component:
+For quick and simple rendering of a document, use the React component:
 
 ```js
 import React from 'react';
@@ -125,9 +125,6 @@ const options = {
   content: '<blockquote><strong>some</strong>content</blockquote>',
   filename: 'doc.html',
   annotations: [ { start: 0, end: 5, classNames: ['a'] }],
-  annotationCallbacks: {
-    onClick: annotation => console.log(annotation),
-  },
   plugins: [toc],
   sanitizeSchema: { attributes: { '*': ['style'] } },
   searchOptions: {
@@ -138,7 +135,7 @@ const options = {
 ```
 
 ## API
-Please refer to [**unified-doc**][unified-doc] for API details on a `doc` instance.
+Please refer to [**unified-doc**][unified-doc] for detailed documentation of `doc` API methods.
 
 ### Methods
 
@@ -158,13 +155,15 @@ Use the `DocProvider` to expose the `doc` instance in a React context.  The `doc
 ```ts
 function useDoc(): DocInstance;
 ```
-Returns a `doc` instance containing all `unified-doc` APIs.
+Returns a `doc` instance with access to `unified-doc` APIs.
 
 ### Interfaces
+Please refer to [**unified-doc**][unified-doc] for detailed documentation of `doc` interfaces.
+
 ```ts
 interface Props {
-  className?: string;
   options: Options;
+  className?: string;
   ref?: React.Ref<HTMLDivElement>;
 }
 
@@ -173,14 +172,13 @@ interface ProviderProps {
   options: Options;
 }
 
-interface Options {
+export interface Options {
   content: string;
   filename: string;
   annotations?: Annotation[];
-  annotationCallbacks?: AnnotationCallbacks;
-  compiler?: Compiler;
-  plugins?: Plugin | Plugin[];
-  sanitizeSchema?: SanitizeSchema;
+  parsers?: Parsers;
+  plugins?: PluggableList;
+  sanitizeSchema?: SanitizeSchema | null;
   searchAlgorithm?: SearchAlgorithm;
   searchOptions?: SearchOptions;
 }
@@ -188,13 +186,15 @@ interface Options {
 
 ## Development
 This project is:
+- implemented with the [unified-doc][unified-doc] interface.
 - linted with `xo` + `prettier` + `tsc`.
-- developed and bundled with `microbundle`.
+- developed and built with `microbundle`.
 - tested with `jest`.
-- softly-typed with `typescript` using `checkJs` (only public APIs are typed).
+- softly-typed with `typescript` with `checkJs` (only public APIs are typed).
+- managed with `lerna
 
 ```sh
-# bootstrap package
+# install dependencies and bootstrap with lerna
 npm run bootstrap
 
 # clean package (rm dist + node_modules)
@@ -211,6 +211,9 @@ npm run test
 
 # build package with microbundle
 npm run build
+
+# publish package with lerna
+npm run publish
 ```
 
 <!-- Links -->
