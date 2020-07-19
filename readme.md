@@ -191,10 +191,9 @@ This project is:
 - developed and built with `microbundle`.
 - tested with `jest`.
 - softly-typed with `typescript` with `checkJs` (only public APIs are typed).
-- managed with `lerna
 
 ```sh
-# install dependencies and bootstrap with lerna
+# install dependencies
 npm run bootstrap
 
 # clean package (rm dist + node_modules)
@@ -211,9 +210,6 @@ npm run test
 
 # build package with microbundle
 npm run build
-
-# publish package with lerna
-npm run publish
 ```
 
 <!-- Links -->
