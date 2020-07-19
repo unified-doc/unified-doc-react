@@ -28,13 +28,12 @@
     "search"
   ],
   "scripts": {
-    "bootstrap": "npm install; lerna bootstrap",
+    "bootstrap": "npm install",
     "build": "microbundle --jsx React.createElement",
     "clean": "rm -rf dist",
     "dev": "microbundle watch --jsx React.createElement",
     "lint": "xo --fix; tsc",
     "prepare": "npm run clean; npm run build",
-    "publish": "lerna publish",
     "test": "jest --watch",
     "test:run": "jest"
   },
@@ -57,7 +56,6 @@
     "eslint-plugin-react-hooks": "^4.0.4",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
-    "lerna": "^3.22.1",
     "microbundle": "^0.12.2",
     "react": "^16.13.1",
     "react-test-renderer": "^16.13.1",
