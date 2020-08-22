@@ -1,12 +1,16 @@
 # unified-doc-react
 [`react`][react] wrapper for [**unified-doc**][unified-doc].
 
+---
+
 ## Install
 ```sh
 npm install unified-doc-react
 ```
 
 ## Use
+
+### `Doc` Component
 For quick and simple rendering of a document, use the React component:
 
 ```js
@@ -16,6 +20,10 @@ import { Doc } from 'unified-doc-react';
 const options = {
   content: '<blockquote><strong>some</strong>content</blockquote>',
   filename: 'doc.html',
+  marks: [
+    { id: 'a', start: 0, end: 5 },
+    { id: 'a', start: 10, end: 12 },
+  ],
 };
 
 function MyDoc() {
@@ -28,7 +36,8 @@ function MyDoc() {
 }
 ```
 
-For building more advanced and interactive document applications, wrap your component with a `DocProvider`.  All components under the `DocProvider` have access to the `doc` instance via the `useDoc` hook.
+### `DocProvider` and `useDoc`
+For building advanced and interactive document applications, wrap your component with a `DocProvider`.  Components under the `DocProvider` have access to the `doc` instance via the `useDoc` hook.
 
 ```js
 // App.js
@@ -52,24 +61,13 @@ function MyApp() {
 
 // MyDoc.js
 import React, { useState } from 'react';
+import { saveFile } from 'unified-doc-dom';
 import { useDoc } from 'unified-doc-react';
 
 function MyDoc() {
   const doc = useDoc();
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
-
-  const file = doc.file();
-  const compiled = doc.compile();
-  const textContent = doc.textContent();
-
-  function download(extension) {
-    const { content, name, type } = doc.file(extension);
-    const file = new File([content], name, { type });
-    const link = document.createElement('a');
-    link.href = file;
-    link.download = name;
-  }
 
   function clearSearch() {
     setQuery('');
@@ -85,7 +83,7 @@ function MyDoc() {
 
   return (
     <div>
-      <h1>{file.name}</h1>
+      <h1>{doc.file().name}</h1>
       <h2>Search</h2>
       <input value={query} onChange={handleSearch} />
       {results.map((result, i) => {
@@ -102,91 +100,114 @@ function MyDoc() {
         Clear search
       </button>
       <h2>Contents</h2>
-      <div>{compiled.result}</div>
-      <button onClick={() => downloadFile()}>
+      <div>{doc.compiled().result}</div>
+      <button onClick={() => saveFile(doc.file())}>
         Download original
       </button>
-      <button onClick={() => downloadFile('.html')}>
+      <button onClick={() => saveFile(doc.file('.html'))}>
         Download HTML
       </button>
       <h2>Text Contents</h2>
-      <pre>{textContent}</pre>
+      <pre>{doc.textContent()}</pre>
     </div>
   );
 }
 ```
 
-Configure document `options`:
+### Use with `unified-doc-dom`
+`unified-doc-react` can be used seamlessly with methods in `unified-doc-dom` to build interactive document applications.
 
 ```js
-import toc from 'rehype-toc';
+import React, { useEffect, useRef, useState } from 'react';
+import { fromFile, highlight, selectText } from 'unified-doc-dom';
+import { Doc } from 'unified-doc-dom';
 
-const options = {
-  content: '<blockquote><strong>some</strong>content</blockquote>',
-  filename: 'doc.html',
-  annotations: [ { start: 0, end: 5, classNames: ['a'] }],
-  plugins: [toc],
-  sanitizeSchema: { attributes: { '*': ['style'] } },
-  searchOptions: {
-    minQueryLength: 3,
-    snippetOffsetPadding: 50,
-  },
-};
+function MyDoc() {
+  const docRef = useRef();
+  const [fileData, setFileData] = useState();
+  const [marks, setMarks] = useState([]);
+
+  function addMark(newMark) {
+    setMarks([...marks, newMark]);
+  }
+
+  // enable and capture selected text as marks
+  useEffect(() => {
+    return selectText(docRef.current, { callback: addMark });
+  }, []);
+
+  // highlight applied marks given its ID
+  function highlightLastMark() {
+    highlight(docRef.current, marks[marks.length - 1].id);
+  }
+
+  // read file data from a JS file
+  async function uploadFile(e) {
+    const fileData = await fromFile(e.target.files[0]);
+    setFileData(fileData);
+  }
+
+  let docContent;
+  if (!fileData) {
+    docContent = <input type="file" onChange={uploadFile}></input>;
+  } else {
+    const options = {
+      content: fileData.content,
+      filename: fileData.name,
+      marks,
+    };
+    docContent = <Doc options={options} />;
+  }
+
+  return (
+    <div ref={docRef}>
+      <button onClick={highlightLastMark}>
+        Highlight last mark
+      </button>
+      {docContent}
+    </div>
+  );
+}
 ```
 
 ## API
-Please refer to [**unified-doc**][unified-doc] for detailed documentation of `doc` API methods.
+- [`Doc`](#Doc)
+- [`DocProvider`](#DocProvider)
+- [`useDoc`](#useDoc)
+- [`options`](#options)
 
-### Methods
+The term `doc` used below refers to a `unified-doc` instance.  Please refer to [**unified-doc**][unified-doc] for detailed documentation of `doc` API methods.
 
-#### `Doc`
+### `Doc`
+#### Interface
 ```ts
 function Doc(props: Props): React.ReactElement;
 ```
-A simple React component that exposes the `doc` APIs.
+A simple React component that wraps around a `doc` instance.
 
-#### `DocProvider`
+### `DocProvider`
+#### Interface
 ```ts
 function DocProvider(providerProps: ProviderProps): React.ReactElement;
 ```
-Use the `DocProvider` to expose the `doc` instance in a React context.  The `doc` instance can be accessed with the `useDoc` method for any components under the `DocProvider`.
+Use the `DocProvider` to expose the `doc` instance in a React context.  Components under `DocProvider` can access the `doc` instance via the `useDoc` hook.
 
-#### `useDoc`
+### `useDoc`
+#### Interface
 ```ts
-function useDoc(): DocInstance;
+export function useDoc(): DocInstance;
 ```
-Returns a `doc` instance with access to `unified-doc` APIs.
+Access the `doc` instance in any components under the `DocProvider`.
 
-### Interfaces
-Please refer to [**unified-doc**][unified-doc] for detailed documentation of `doc` interfaces.
+### `options`
+Provide `options` to configure `unified-doc`.
 
-```ts
-interface Props {
-  options: Options;
-  className?: string;
-  ref?: React.Ref<HTMLDivElement>;
-}
+Please refer to [**unified-doc**][unified-doc] for detailed documentation of `options`.
 
-interface ProviderProps {
-  children: React.ReactNode;
-  options: Options;
-}
-
-export interface Options {
-  content: string;
-  filename: string;
-  annotations?: Annotation[];
-  parsers?: Parsers;
-  plugins?: PluggableList;
-  sanitizeSchema?: SanitizeSchema | null;
-  searchAlgorithm?: SearchAlgorithm;
-  searchOptions?: SearchOptions;
-}
-```
 
 ## Development
 This project is:
-- implemented with the [unified-doc][unified-doc] interface.
+- implemented with the `unified-doc` interface.
 - linted with `xo` + `prettier` + `tsc`.
 - developed and built with `microbundle`.
 - tested with `jest`.
@@ -196,22 +217,25 @@ This project is:
 # install dependencies
 npm run bootstrap
 
+# build package with microbundle
+npm run build
+
 # clean package (rm dist + node_modules)
 npm run clean
-
-# lint package with xo + prettier + tsc
-npm run lint
 
 # watch/rebuild package with microbundle
 npm run dev
 
-# test package with jest (make sure to run the 'dev' script)
+# lint package with xo + prettier + tsc
+npm run lint
+
+# test package with jest in --watch mode (make sure to run the 'dev' script)
 npm run test
 
-# build package with microbundle
-npm run build
+# test package in a single run
+npm run test:ci
 ```
 
-<!-- Links -->
+<!-- Definitions -->
 [react]: https://github.com/facebook/react
 [unified-doc]: https://github.com/unified-doc/unified-doc
