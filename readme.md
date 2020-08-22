@@ -220,6 +220,9 @@ npm run bootstrap
 # build package with microbundle
 npm run build
 
+# regenerate changelog (conventional-changelog)
+npm run changelog
+
 # clean package (rm dist + node_modules)
 npm run clean
 
