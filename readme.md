@@ -190,28 +190,28 @@ function MyDoc() {
 ```
 
 ## API
-- [`Doc`](#Doc)
-- [`DocProvider`](#DocProvider)
-- [`useDoc`](#useDoc)
+- [`Doc(props)`](#Docprops)
+- [`DocProvider(props)`](#DocProvider(props))
+- [`useDoc()`](#useDoc)
 - [`options`](#options)
 
 The term `doc` used below refers to a `unified-doc` instance.  Please refer to [**unified-doc**][unified-doc] for detailed documentation of `doc` API methods.
 
-### `Doc`
+### `Doc(props)`
 #### Interface
 ```ts
 function Doc(props: Props): React.ReactElement;
 ```
 A simple React component that wraps around a `doc` instance.
 
-### `DocProvider`
+### `DocProvider(providerProps)`
 #### Interface
 ```ts
-function DocProvider(providerProps: ProviderProps): React.ReactElement;
+function DocProvider(props: ProviderProps): React.ReactElement;
 ```
 Use the `DocProvider` to expose the `doc` instance in a React context.  Components under `DocProvider` can access the `doc` instance via the `useDoc` hook.
 
-### `useDoc`
+### `useDoc()`
 #### Interface
 ```ts
 export function useDoc(): DocInstance;
