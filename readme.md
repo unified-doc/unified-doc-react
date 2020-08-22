@@ -18,8 +18,8 @@ import React from 'react';
 import { Doc } from 'unified-doc-react';
 
 const options = {
-  content: '<blockquote><strong>some</strong>content</blockquote>',
-  filename: 'doc.html',
+  content: '> some **strong** content',
+  filename: 'doc.md',
   marks: [
     { id: 'a', start: 0, end: 5 },
     { id: 'a', start: 10, end: 12 },
@@ -47,8 +47,8 @@ import { DocProvider } from 'unified-doc-react';
 import MyDoc from './MyDoc';
 
 const options = {
-  content: '<blockquote><strong>some</strong>content</blockquote>',
-  filename: 'doc.html',
+  content: '> some **strong** content',
+  filename: 'doc.md',
 };
 
 function MyApp() {
@@ -100,12 +100,15 @@ function MyDoc() {
         Clear search
       </button>
       <h2>Contents</h2>
-      <div>{doc.compiled().result}</div>
+      <div>{doc.compile().result}</div>
       <button onClick={() => saveFile(doc.file())}>
         Download original
       </button>
       <button onClick={() => saveFile(doc.file('.html'))}>
         Download HTML
+      </button>
+      <button onClick={() => saveFile(doc.file('.txt'))}>
+        Download text
       </button>
       <h2>Text Contents</h2>
       <pre>{doc.textContent()}</pre>
@@ -119,8 +122,12 @@ function MyDoc() {
 
 ```js
 import React, { useEffect, useRef, useState } from 'react';
-import { fromFile, highlight, selectText } from 'unified-doc-dom';
-import { Doc } from 'unified-doc-dom';
+import { fromFile, highlight, registerMarks, selectText } from 'unified-doc-dom';
+import { Doc } from 'unified-doc-react';
+import { v4 as uuidv4 } from 'uuid';
+
+// import optional highlight styles
+import 'unified-doc-dom/css/highlight.css';
 
 function MyDoc() {
   const docRef = useRef();
@@ -128,13 +135,23 @@ function MyDoc() {
   const [marks, setMarks] = useState([]);
 
   function addMark(newMark) {
-    setMarks([...marks, newMark]);
+    setMarks(oldMarks => [...oldMarks, { ...newMark, id: uuidv4() }]);
   }
 
   // enable and capture selected text as marks
   useEffect(() => {
     return selectText(docRef.current, { callback: addMark });
   }, []);
+
+  // register marks with callbacks
+  useEffect(() => {
+    const callbacks = {
+      onClick: (event, mark) => console.log('clicked', event, mark),
+      onMouseEnter: (event, mark) => console.log('mouseenter', event, mark),
+      onMouseOut: (event, mark) => console.log('mouseout', event, mark),
+    }
+    registerMarks(docRef.current, marks, callbacks);
+  }, [marks]);
 
   // highlight applied marks given its ID
   function highlightLastMark() {
@@ -160,11 +177,13 @@ function MyDoc() {
   }
 
   return (
-    <div ref={docRef}>
+    <div>
       <button onClick={highlightLastMark}>
         Highlight last mark
       </button>
-      {docContent}
+      <div ref={docRef}>
+        {docContent}
+      </div>
     </div>
   );
 }
