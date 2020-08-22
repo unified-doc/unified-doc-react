@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`plugins applies custom plugins 1`] = `
+exports[`plugins applies post plugins 1`] = `
 <div>
   <div>
     <nav

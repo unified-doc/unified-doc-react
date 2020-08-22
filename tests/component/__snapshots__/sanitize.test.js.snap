@@ -16,6 +16,28 @@ exports[`sanitize applies custom sanitize schema 1`] = `
 </div>
 `;
 
+exports[`sanitize does not apply sanitize schema 1`] = `
+<div>
+  <div>
+    <html>
+      <head />
+      <body>
+        <div
+          className="red"
+          style={
+            Object {
+              "background": "red",
+            }
+          }
+        >
+          text
+        </div>
+      </body>
+    </html>
+  </div>
+</div>
+`;
+
 exports[`sanitize sanitizes html by default 1`] = `
 <div>
   <div>

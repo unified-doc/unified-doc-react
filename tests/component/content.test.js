@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { markdownContent, htmlContent } from '../fixtures';
 import Doc from '../../lib/component';
+import { markdownContent, htmlContent } from '../fixtures';
 
 describe('content', () => {
   describe('html content', () => {
@@ -14,12 +14,14 @@ describe('content', () => {
         .toJSON();
       expect(tree).toMatchSnapshot();
     });
+
     it('renders html content (.txt extension)', () => {
       const tree = renderer
         .create(<Doc options={{ content: htmlContent, filename: 'doc.txt' }} />)
         .toJSON();
       expect(tree).toMatchSnapshot();
     });
+
     it('renders html content (.md extension)', () => {
       const tree = renderer
         .create(<Doc options={{ content: htmlContent, filename: 'doc.md' }} />)
@@ -27,6 +29,7 @@ describe('content', () => {
       expect(tree).toMatchSnapshot();
     });
   });
+
   describe('markdown content', () => {
     it('renders markdown content (.html extension)', () => {
       const tree = renderer
@@ -36,6 +39,7 @@ describe('content', () => {
         .toJSON();
       expect(tree).toMatchSnapshot();
     });
+
     it('renders markdown content (.txt extension)', () => {
       const tree = renderer
         .create(
@@ -44,6 +48,7 @@ describe('content', () => {
         .toJSON();
       expect(tree).toMatchSnapshot();
     });
+
     it('renders markdown content (.md extension)', () => {
       const tree = renderer
         .create(

@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`marks applies custom class names and styles 1`] = `
+<div>
+  <div>
+    <blockquote>
+      <strong>
+        <mark
+          className="class-a"
+          data-mark-id="a"
+          id="a"
+          style={
+            Object {
+              "background": "red",
+              "color": "yellow",
+            }
+          }
+        >
+          some
+        </mark>
+      </strong>
+      
+
+      <mark
+        className="class-b1 class-b2"
+        data-mark-id="b"
+        id="b"
+      >
+        content
+      </mark>
+    </blockquote>
+  </div>
+</div>
+`;
+
+exports[`marks does nothing when marks are out of range 1`] = `
+<div>
+  <div>
+    <blockquote>
+      <strong>
+        some
+      </strong>
+      
+content
+    </blockquote>
+  </div>
+</div>
+`;
+
+exports[`marks does nothing with empty marks 1`] = `
+<div>
+  <div>
+    <blockquote>
+      <strong>
+        some
+      </strong>
+      
+content
+    </blockquote>
+  </div>
+</div>
+`;
+
+exports[`marks marks non-overlapping text nodes 1`] = `
+<div>
+  <div>
+    <blockquote>
+      <strong>
+        <mark
+          data-mark-id="a"
+          id="a"
+        >
+          some
+        </mark>
+      </strong>
+      
+
+      <mark
+        data-mark-id="b"
+        id="b"
+      >
+        content
+      </mark>
+    </blockquote>
+  </div>
+</div>
+`;
+
+exports[`marks marks overlapping text nodes 1`] = `
+<div>
+  <div>
+    <blockquote>
+      <strong>
+        <mark
+          className="class-a"
+          data-mark-id="a"
+          id="a"
+        >
+          some
+        </mark>
+      </strong>
+      <mark
+        className="class-a"
+        data-mark-id="a"
+        id="a"
+      >
+        
+
+      </mark>
+      <mark
+        className="class-a"
+        data-mark-id="a"
+      >
+        <mark
+          className="class-b"
+          data-mark-id="b"
+          id="b"
+        >
+          c
+        </mark>
+      </mark>
+      <mark
+        className="class-a"
+        data-mark-id="a"
+      >
+        <mark
+          className="class-b"
+          data-mark-id="b"
+        >
+          <mark
+            className="class-c"
+            data-mark-id="c"
+            id="c"
+          >
+            o
+          </mark>
+        </mark>
+      </mark>
+      <mark
+        className="class-b"
+        data-mark-id="b"
+      >
+        <mark
+          className="class-c"
+          data-mark-id="c"
+        >
+          nte
+        </mark>
+      </mark>
+      <mark
+        className="class-c"
+        data-mark-id="c"
+      >
+        nt
+      </mark>
+    </blockquote>
+  </div>
+</div>
+`;

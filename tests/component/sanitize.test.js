@@ -12,6 +12,7 @@ describe('sanitize', () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
+
   it('applies custom sanitize schema', () => {
     const sanitizeSchema = { attributes: { '*': ['style'] } };
     const tree = renderer
@@ -21,6 +22,21 @@ describe('sanitize', () => {
             content: htmlContent,
             filename: 'doc.html',
             sanitizeSchema,
+          }}
+        />,
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('does not apply sanitize schema', () => {
+    const tree = renderer
+      .create(
+        <Doc
+          options={{
+            content: htmlContent,
+            filename: 'doc.html',
+            sanitizeSchema: null,
           }}
         />,
       )
