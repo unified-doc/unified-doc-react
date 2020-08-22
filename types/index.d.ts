@@ -3,8 +3,8 @@ import { Doc as DocInstance, Options } from 'unified-doc';
 export * from 'unified-doc';
 
 export interface Props {
-  className?: string;
   options: Options;
+  className?: string;
   ref?: React.Ref<HTMLDivElement>;
 }
 
