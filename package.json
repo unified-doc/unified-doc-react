@@ -1,10 +1,10 @@
 {
   "name": "unified-doc-react",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "react wrapper for unified-doc",
   "license": "MIT",
   "homepage": "https://github.com/unified-doc/unified-doc-react",
-  "repository": "unified-doc/unified-doc-react",
+  "repository": "https://github.com/unified-doc/unified-doc-react",
   "bugs": "https://github.com/unified-doc/unified-doc-react/issues",
   "author": "Chris Zhou <chrisrzhou@pm.me> (https://chrisrzhou.io)",
   "keywords": [
@@ -22,6 +22,7 @@
     "text",
     "compile",
     "export",
+    "mark",
     "annotate",
     "highlight",
     "nlp",
@@ -35,7 +36,7 @@
     "lint": "xo --fix; tsc",
     "prepare": "npm run clean; npm run build",
     "test": "jest --watch",
-    "test:run": "jest"
+    "test:ci": "jest"
   },
   "main": "dist/index.js",
   "module": "dist/index.module.js",
@@ -46,29 +47,29 @@
     "unified-doc": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.1",
-    "@types/jest": "^26.0.0",
-    "@types/react": "^16.9.39",
-    "babel-jest": "^26.1.0",
+    "@types/jest": "^26.0.10",
+    "@types/react": "^16.9.46",
+    "babel-jest": "^26.3.0",
     "eslint-config-xo-react": "^0.23.0",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
     "husky": "^4.2.5",
-    "jest": "^26.1.0",
+    "jest": "^26.4.1",
     "microbundle": "^0.12.2",
     "react": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "rehype-toc": "^3.0.1",
-    "typescript": "^3.9.5",
-    "xo": "^0.32.0"
+    "typescript": "^4.0.2",
+    "xo": "^0.33.0"
   },
   "peerDependencies": {
     "react": "^16.13.1"
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm prepare; npm run lint; npm run test:run"
+      "pre-push": "npm prepare; npm run lint; npm run test:ci"
     }
   },
   "prettier": {
@@ -86,15 +87,7 @@
     ],
     "prettier": true,
     "rules": {
-      "@typescript-eslint/prefer-readonly-parameter-types": "off",
       "capitalized-comments": "off",
-      "no-unused-vars": [
-        "error",
-        {
-          "argsIgnorePattern": "^_"
-        }
-      ],
-      "no-warning-comments": "off",
       "padding-line-between-statements": "off",
       "react/function-component-definition": "off",
       "react/prop-types": "off"
