@@ -10,7 +10,7 @@ npm install unified-doc-react
 
 ## Use
 
-### `Doc` Component
+### `Doc` component
 For quick and simple rendering of a document, use the React component:
 
 ```js
@@ -191,7 +191,7 @@ function MyDoc() {
 
 ## API
 - [`Doc(props)`](#Docprops)
-- [`DocProvider(props)`](#DocProvider(props))
+- [`DocProvider(props)`](#DocProviderprops)
 - [`useDoc()`](#useDoc)
 - [`options`](#options)
 
@@ -204,7 +204,7 @@ function Doc(props: Props): React.ReactElement;
 ```
 A simple React component that wraps around a `doc` instance.
 
-### `DocProvider(providerProps)`
+### `DocProvider(props)`
 #### Interface
 ```ts
 function DocProvider(props: ProviderProps): React.ReactElement;
