@@ -263,9 +263,6 @@ npm run bootstrap
 # build package with microbundle
 npm run build
 
-# regenerate changelog (conventional-changelog)
-npm run changelog
-
 # clean package (rm dist + node_modules)
 npm run clean
 
@@ -274,6 +271,9 @@ npm run dev
 
 # lint package with xo + prettier + tsc
 npm run lint
+
+# update semantic version with changelog
+npm run release
 
 # test package with jest in --watch mode (make sure to run the 'dev' script)
 npm run test
