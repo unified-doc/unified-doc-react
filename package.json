@@ -1,6 +1,6 @@
 {
   "name": "unified-doc-react",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "react wrapper for unified-doc",
   "license": "MIT",
   "homepage": "https://github.com/unified-doc/unified-doc-react",
@@ -35,7 +35,7 @@
     "dev": "microbundle watch --jsx React.createElement",
     "lint": "xo --fix; tsc",
     "prepare": "npm run clean; npm run build",
-    "release": "standard-version -s",
+    "release": "standard-version -s --infile changelog.md",
     "test": "jest --watch",
     "test:run": "jest"
   },
