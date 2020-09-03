@@ -37,7 +37,7 @@
     "lint": "xo --fix; tsc",
     "prepare": "npm run clean; npm run build",
     "test": "jest --watch",
-    "test:ci": "jest"
+    "test:run": "jest"
   },
   "main": "dist/index.js",
   "module": "dist/index.module.js",
@@ -49,33 +49,33 @@
   ],
   "dependencies": {
     "rehype-react": "^6.1.0",
-    "unified-doc": "^2.0.4"
+    "unified-doc": "^3.0.4"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.1",
-    "@types/jest": "^26.0.10",
-    "@types/react": "^16.9.46",
+    "@types/jest": "^26.0.13",
+    "@types/react": "^16.9.49",
     "babel-jest": "^26.3.0",
     "conventional-changelog": "^3.1.23",
     "eslint-config-xo-react": "^0.23.0",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
     "husky": "^4.2.5",
-    "jest": "^26.4.1",
+    "jest": "^26.4.2",
     "microbundle": "^0.12.2",
     "react": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "rehype-toc": "^3.0.1",
     "typescript": "^4.0.2",
-    "xo": "^0.33.0"
+    "xo": "^0.33.1"
   },
   "peerDependencies": {
     "react": "^16.13.1"
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm prepare; npm run lint; npm run test:ci"
+      "pre-push": "npm prepare; npm run lint; npm run test:run"
     }
   },
   "prettier": {
@@ -95,6 +95,7 @@
     "rules": {
       "capitalized-comments": "off",
       "padding-line-between-statements": "off",
+      "new-cap": "off",
       "react/function-component-definition": "off",
       "react/prop-types": "off"
     }
