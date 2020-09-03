@@ -1,8 +1,8 @@
-import { Doc as DocInstance, Options } from 'unified-doc';
+import { DocInstance, Options } from 'unified-doc';
 
 export * from 'unified-doc';
 
-/** props for the react `Doc` component */
+/** props for the react `DocComponent` */
 export interface Props {
   /** options for `doc` instance */
   options: Options;
@@ -23,7 +23,7 @@ export interface ProviderProps {
 /**
  * React component wrapping around a `doc` instance
  */
-export function Doc(props: Props): React.ReactElement;
+export function DocComponent(props: Props): React.ReactElement;
 
 /**
  * Provider exposing the `doc` instance in a React context

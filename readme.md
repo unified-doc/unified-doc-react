@@ -10,12 +10,12 @@ npm install unified-doc-react
 
 ## Use
 
-### `Doc` component
+### `DocComponent`
 For quick and simple rendering of a document, use the React component:
 
 ```js
 import React from 'react';
-import { Doc } from 'unified-doc-react';
+import { DocComponent } from 'unified-doc-react';
 
 const options = {
   content: '> some **strong** content',
@@ -28,7 +28,7 @@ const options = {
 
 function MyDoc() {
   return (
-    <Doc
+    <DocComponent
       className="my-doc"
       options={options}
     />
@@ -123,7 +123,7 @@ function MyDoc() {
 ```js
 import React, { useEffect, useRef, useState } from 'react';
 import { fromFile, highlight, registerMarks, selectText } from 'unified-doc-dom';
-import { Doc } from 'unified-doc-react';
+import { DocComponent } from 'unified-doc-react';
 import { v4 as uuidv4 } from 'uuid';
 
 // import optional highlight styles
@@ -140,6 +140,7 @@ function MyDoc() {
 
   // enable and capture selected text as marks
   useEffect(() => {
+    // cleanup function conveniently returned
     return selectText(docRef.current, { callback: addMark });
   }, []);
 
@@ -150,7 +151,8 @@ function MyDoc() {
       onMouseEnter: (event, mark) => console.log('mouseenter', event, mark),
       onMouseOut: (event, mark) => console.log('mouseout', event, mark),
     }
-    registerMarks(docRef.current, marks, callbacks);
+    // cleanup function conveniently returned
+    return registerMarks(docRef.current, marks, callbacks);
   }, [marks]);
 
   // highlight applied marks given its ID
@@ -173,7 +175,7 @@ function MyDoc() {
       filename: fileData.name,
       marks,
     };
-    docContent = <Doc options={options} />;
+    docContent = <DocComponent options={options} />;
   }
 
   return (
@@ -190,19 +192,31 @@ function MyDoc() {
 ```
 
 ## API
-- [`Doc(props)`](#Docprops)
+- [`DocComponent(props)`](#DocComponentprops)
 - [`DocProvider(props)`](#DocProviderprops)
 - [`useDoc()`](#useDoc)
 - [`options`](#options)
 
 The term `doc` used below refers to a `unified-doc` instance.  Please refer to [**unified-doc**][unified-doc] for detailed documentation of `doc` API methods.
 
-### `Doc(props)`
+### `DocComponent(props)`
 #### Interface
 ```ts
-function Doc(props: Props): React.ReactElement;
+function DocComponent(props: Props): React.ReactElement;
 ```
 A simple React component that wraps around a `doc` instance.
+
+#### Related interfaces
+```ts
+interface Props {
+  /** options for `doc` instance */
+  options: Options;
+  /** optional `className` to attach to rendered `docElement` */
+  className?: string;
+  /** a reference to the rendered `docElement` */
+  ref?: React.Ref<HTMLDivElement>;
+}
+```
 
 ### `DocProvider(props)`
 #### Interface
@@ -210,6 +224,16 @@ A simple React component that wraps around a `doc` instance.
 function DocProvider(props: ProviderProps): React.ReactElement;
 ```
 Use the `DocProvider` to expose the `doc` instance in a React context.  Components under `DocProvider` can access the `doc` instance via the `useDoc` hook.
+
+#### Related interfaces
+```ts
+interface ProviderProps {
+  /** any React node */
+  children: React.ReactNode;
+  /** options for `doc` instance */
+  options: Options;
+}
+```
 
 ### `useDoc()`
 #### Interface
@@ -255,7 +279,7 @@ npm run lint
 npm run test
 
 # test package in a single run
-npm run test:ci
+npm run test:run
 ```
 
 <!-- Definitions -->
