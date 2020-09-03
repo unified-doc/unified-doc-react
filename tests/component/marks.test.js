@@ -1,8 +1,16 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Doc from '../../lib/component';
+import DocComponent from '../../lib/component';
 import { htmlContent } from '../fixtures';
+
+const sanitizeSchema = {
+  attributes: {
+    '*': ['className', 'style'],
+    mark: ['dataMarkId', 'id'],
+  },
+  clobberPrefix: '',
+};
 
 describe('marks', () => {
   it('does nothing with empty marks', () => {
@@ -11,8 +19,9 @@ describe('marks', () => {
       content: htmlContent,
       filename: 'doc.html',
       marks,
+      sanitizeSchema,
     };
-    const tree = renderer.create(<Doc options={options} />).toJSON();
+    const tree = renderer.create(<DocComponent options={options} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -22,8 +31,9 @@ describe('marks', () => {
       content: htmlContent,
       filename: 'doc.html',
       marks,
+      sanitizeSchema,
     };
-    const tree = renderer.create(<Doc options={options} />).toJSON();
+    const tree = renderer.create(<DocComponent options={options} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -36,8 +46,9 @@ describe('marks', () => {
       content: htmlContent,
       filename: 'doc.html',
       marks,
+      sanitizeSchema,
     };
-    const tree = renderer.create(<Doc options={options} />).toJSON();
+    const tree = renderer.create(<DocComponent options={options} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -51,8 +62,9 @@ describe('marks', () => {
       content: htmlContent,
       filename: 'doc.html',
       marks,
+      sanitizeSchema,
     };
-    const tree = renderer.create(<Doc options={options} />).toJSON();
+    const tree = renderer.create(<DocComponent options={options} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -71,8 +83,9 @@ describe('marks', () => {
       content: htmlContent,
       filename: 'doc.html',
       marks,
+      sanitizeSchema,
     };
-    const tree = renderer.create(<Doc options={options} />).toJSON();
+    const tree = renderer.create(<DocComponent options={options} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

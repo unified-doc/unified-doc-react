@@ -1,22 +1,107 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`plugins applies post plugins 1`] = `
+exports[`plugins applies postPlugins 1`] = `
 <div>
   <div>
-    <nav
-      className="toc"
+    <pre
+      className="language-js"
     >
-      <ol
-        className="custom-list custom-list-1"
-      />
-    </nav>
-    <blockquote>
-      <strong>
-        some
-      </strong>
-      
-content
-    </blockquote>
+      <code
+        className="hljs language-js"
+      >
+        <span
+          className="hljs-function"
+        >
+          <span
+            className="hljs-keyword"
+          >
+            function
+          </span>
+           
+          <span
+            className="hljs-title"
+          >
+            hello
+          </span>
+          (
+          <span
+            className="hljs-params"
+          />
+          ) 
+        </span>
+        {
+  
+        <span
+          className="hljs-keyword"
+        >
+          return
+        </span>
+         
+        <span
+          className="hljs-string"
+        >
+          "world"
+        </span>
+        ;
+}
+      </code>
+    </pre>
+  </div>
+</div>
+`;
+
+exports[`plugins applies prePlugins 1`] = `
+<div>
+  <div>
+    <pre
+      className="language-js"
+    >
+      <code
+        className="hljs language-js"
+      >
+        <span
+          className="hljs-function"
+        >
+          <span
+            className="hljs-keyword"
+          >
+            function
+          </span>
+           
+          <span
+            className="hljs-title"
+          >
+            <mark
+              className="a b"
+              data-mark-id="a"
+              id="a"
+            >
+              hello
+            </mark>
+          </span>
+          (
+          <span
+            className="hljs-params"
+          />
+          ) 
+        </span>
+        {
+  
+        <span
+          className="hljs-keyword"
+        >
+          return
+        </span>
+         
+        <span
+          className="hljs-string"
+        >
+          "world"
+        </span>
+        ;
+}
+      </code>
+    </pre>
   </div>
 </div>
 `;

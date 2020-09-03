@@ -1,5 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`content code block content (sanitized) renders JS content to code block (.js extension) 1`] = `
+<div>
+  <div>
+    <pre
+      className="language-js"
+    >
+      <code
+        className="language-js"
+      >
+        function hello() {
+  return "world";
+}
+      </code>
+    </pre>
+  </div>
+</div>
+`;
+
+exports[`content code block content (sanitized) renders JSON content to code block (.js extension) 1`] = `
+<div>
+  <div>
+    <pre
+      className="language-json"
+    >
+      <code
+        className="language-json"
+      >
+        {"one":2,"three":[true,false,null,"four",5],"six":{"7":"eight","nine":0}}
+      </code>
+    </pre>
+  </div>
+</div>
+`;
+
+exports[`content html content renders code block (.any extension) 1`] = `
+<div>
+  <div>
+    <pre>
+      <code>
+        &lt;blockquote&gt;&lt;strong&gt;some&lt;/strong&gt;
+content&lt;/blockquote&gt;
+      </code>
+    </pre>
+  </div>
+</div>
+`;
+
 exports[`content html content renders html content (.html extension) 1`] = `
 <div>
   <div>
@@ -20,11 +67,14 @@ exports[`content html content renders html content (.md extension) 1`] = `
 </div>
 `;
 
-exports[`content html content renders html content (.txt extension) 1`] = `
+exports[`content markdown content renders code block (.any extension) 1`] = `
 <div>
   <div>
-    &lt;blockquote&gt;&lt;strong&gt;some&lt;/strong&gt;
-content&lt;/blockquote&gt;
+    <pre>
+      <code>
+        &gt; **some** markdown content
+      </code>
+    </pre>
   </div>
 </div>
 `;
@@ -52,14 +102,6 @@ exports[`content markdown content renders markdown content (.md extension) 1`] =
       
 
     </blockquote>
-  </div>
-</div>
-`;
-
-exports[`content markdown content renders markdown content (.txt extension) 1`] = `
-<div>
-  <div>
-    &gt; **some** markdown content
   </div>
 </div>
 `;
