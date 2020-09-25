@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1](https://github.com/unified-doc/unified-doc-react/compare/v3.1.0...v3.1.1) (2020-09-25)
+
+
+### Bug Fixes
+
+* update deps to fix and support `gfm` in `doc.file('.md')`. ([9e54764](https://github.com/unified-doc/unified-doc-react/commit/9e54764372c4e6972890c3486fa9f57f602b3d0b))
+
 ## [3.1.0](https://github.com/unified-doc/unified-doc-react/compare/v3.0.0...v3.1.0) (2020-09-13)
 
 
